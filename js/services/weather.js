@@ -1,6 +1,11 @@
-export async function getCurrentWeather() {
+import { API_KEY, BASE_URL } from "../constants.js";
+
+export async function getCurrentWeather(lat, long) {
   const response = await fetch(
-    `api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}`
+    `${BASE_URL}?lat=${lat}&lon=${long}&appid=${API_KEY}&units=metric`
   );
-  const data = response.json();
+
+  if (!response.ok) return { isError: true, data: null };
+  const data = await response.json();
+  return { isError: false, data };
 }
