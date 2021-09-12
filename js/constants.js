@@ -8,4 +8,4 @@ export const weatherConditionsCodes = {
 };
 
 export const API_KEY = "5499758e00d77f440d3beb3b1bcf5b30";
-export const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
+export const BASE_URL = "https://api.openweathermap.org/data/2.5";

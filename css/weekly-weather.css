@@ -4,10 +4,12 @@
   border-radius: 1rem 1rem 0 0;
   /* transform: translateY(calc(100% - 1.5rem)); */
   user-select: none;
+  /* propiedad para usar touch de js */
+  touch-action: none;
 }
 
 .weeklyWeather.is-active {
-  transition: .2s transform;
+  transition: 0.2s transform;
   transform: translateY(0);
 }
 
@@ -18,18 +20,16 @@
 }
 .weeklyWeather-marker:active {
   cursor: row-resize;
-
 }
 .weeklyWeather-marker:before {
-  content: '';
+  content: "";
   position: absolute;
   inline-size: 4rem;
-  border-radius: .25rem;
-  block-size: .25rem;
+  border-radius: 0.25rem;
+  block-size: 0.25rem;
   background: var(--white);
   margin: auto;
-  inset-block-start: .5rem;
+  inset-block-start: 0.5rem;
   inset-inline-start: 0;
   inset-inline-end: 0;
 }
-

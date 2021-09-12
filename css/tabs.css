@@ -6,8 +6,9 @@
 }
 
 .tab {
-  border-block-end: .25rem solid transparent;
-  padding-block-end: .5rem;
+  border-block-end: 0.25rem solid transparent;
+  padding-block-end: 0.5rem;
+  cursor: pointer;
 }
 
 .tab[aria-selected="true"] {
@@ -23,4 +24,3 @@
 .tabList:not([hidden]) {
   display: flex;
 }
-

@@ -24,6 +24,7 @@ function nextDay(day) {
 }
 
 $tabList.forEach((tab, index) => {
+  tab.addEventListener("click", handlerSelectTabClick);
   if (index === 0) {
     tab.textContent = "Hoy";
     weekday = nextDay(weekday);
@@ -33,3 +34,24 @@ $tabList.forEach((tab, index) => {
   tab.textContent = week[weekday];
   weekday = nextDay(weekday);
 });
+
+function handlerSelectTabClick(event) {
+  const $tabActive = document.querySelector('.tab[aria-selected="true"]');
+  $tabActive.ariaSelected = false;
+
+  const $tabSelected = event.target;
+  $tabSelected.ariaSelected = true;
+
+  const id = $tabSelected.id;
+
+  const $tabPanel = document.querySelector(`[aria-labelledby=${id}]`);
+  //this line work because there is a tabpanel without hidden
+  const $tabPanelSelected = document.querySelector(`.tabPanel:not([hidden])`);
+
+  $tabPanel.hidden = false;
+  $tabPanelSelected.hidden = true;
+
+  // console.log($tabPanel);
+  // debugger;
+  // console.log($tabPanel);
+}
