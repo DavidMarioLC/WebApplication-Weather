@@ -12,6 +12,7 @@
 }
 
 .dayWeather-item {
+  cursor: pointer;
   inline-size: 4rem;
   flex-shrink: 0;
   display: flex;
@@ -31,7 +32,7 @@
 }
 .dayWeather-icon {
   max-inline-size: 100%;
-  margin-inline: .5rem;
+  margin-inline: 0.5rem;
   object-fit: cover; /* safari */
 }
 

@@ -1,5 +1,5 @@
 const defaultConfig = {
-  open: false,
+  open: true,
   debug: true,
   animable: false,
 };
@@ -115,7 +115,7 @@ export function draggable($element, config = defaultConfig) {
 
   function logger(message) {
     if (config.debug) {
-      console.info(message);
+      // console.info(message);
     }
   }
 
@@ -137,6 +137,4 @@ export function draggable($element, config = defaultConfig) {
   function setWidgetPosition(value) {
     $element.style.marginBottom = `-${value}px`;
   }
-
-  console.log($element);
 }

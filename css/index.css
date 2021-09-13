@@ -1,13 +1,14 @@
-@import './global.css';
-@import './current-weather.css';
-@import './weekly-weather.css';
-@import './tabs.css';
-@import './day-weather.css';
-@import './loading.css';
+@import "./global.css";
+@import "./current-weather.css";
+@import "./weekly-weather.css";
+@import "./tabs.css";
+@import "./day-weather.css";
+@import "./loading.css";
+@import "./weather-features.css";
 
 .app {
   block-size: 100vh;
-  background-image: url('../images/morning-clean.jpg');
+  background-image: url("../images/morning-clean.jpg");
   background-size: cover;
   background-position: right bottom;
   display: flex;

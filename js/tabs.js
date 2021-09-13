@@ -50,8 +50,4 @@ function handlerSelectTabClick(event) {
 
   $tabPanel.hidden = false;
   $tabPanelSelected.hidden = true;
-
-  // console.log($tabPanel);
-  // debugger;
-  // console.log($tabPanel);
 }

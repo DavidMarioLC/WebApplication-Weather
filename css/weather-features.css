@@ -1,0 +1,7 @@
+.weather-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: start;
+  padding: 0 1rem;
+  color: var(--white);
+}

@@ -3,6 +3,7 @@ import { getLatitudAndLongitud } from "./geolocation.js";
 import { formatWeekList } from "../utils/formatWeekList.js";
 import { createDOM } from "../utils/dom.js";
 import { createPeriodTime } from "./periodTime.js";
+// import { createWeatherFeatures } from "./weatherFeatures.js";
 import { draggable } from "./draggable.js";
 
 function createTabPanel(index) {
@@ -18,26 +19,59 @@ function tabPanelTemplate(id) {
   <div class="tabPanel" tabindex="0" aria-labelledby="tab-${id}">
   <div class="dayWeather" id="dayWeather-${id}">
     <ul class="dayWeather-list" id="dayWeather-list-${id}">
-    
     </ul>
+    
   </div>
 </div>
   `;
 }
 
-function configWeeklyWeather(weekList) {
-  // const $container = document.querySelector(".weeklyWeather");
+function configWeeklyWeather(arrayWeekList) {
+  //contenedor del panel
   const $container = document.querySelector(".tabs");
-  weekList.forEach((day, index) => {
+  const otherWeather = [];
+  let myIndex = 0;
+  arrayWeekList.forEach((arrayDay, index) => {
+    //creando panel
+
+    //agregando panel al html
     const $panel = createTabPanel(index);
     $container.append($panel);
 
-    day.forEach((weather, index) => {
-      $panel
-        .querySelector(".dayWeather-list")
-        .append(createPeriodTime(weather));
+    arrayDay.forEach((weather, index) => {
+      otherWeather.push(weather);
+      const hoursList = $panel.querySelector(".dayWeather-list");
+      hoursList.append(createPeriodTime(weather, myIndex));
+
+      const $dayList = document.querySelectorAll(".dayWeather-item");
+
+      $dayList.forEach((element) => {
+        element.addEventListener("click", mostrarClimaEscogido);
+      });
+
+      myIndex++;
     });
   });
+
+  function mostrarClimaEscogido(e) {
+    const $dayList = document.querySelectorAll(".dayWeather-item");
+    $dayList.forEach((item) => item.classList.remove("is-selected"));
+    e.currentTarget.classList.add("is-selected");
+
+    // console.log(otherWeather[e.currentTarget.dataset.id]);
+    const {
+      wind: { speed },
+      main: { humidity, temp_max, temp_min },
+    } = otherWeather[e.currentTarget.dataset.id];
+
+    const $renderFeatures = document.querySelector(".weather-features");
+    $renderFeatures.innerHTML = `
+    <p class="weather-max">Max: <strong>${temp_max}</strong>°</strong></p>
+    <p class="weather-min">Min: <strong>${temp_min}°</strong></p>
+    <p class="weather-wind">Viento: <strong>${speed} km/h</strong></p>
+    <p class="weather-humidity">Humedad: <strong>${humidity}%</strong></p>
+    `;
+  }
 }
 
 export default async function weeklyWeather() {
@@ -57,5 +91,6 @@ export default async function weeklyWeather() {
 
   const weekList = formatWeekList(weather.list);
   configWeeklyWeather(weekList);
+
   draggable($container);
 }
