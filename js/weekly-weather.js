@@ -58,7 +58,7 @@ function configWeeklyWeather(arrayWeekList) {
     $dayList.forEach((item) => item.classList.remove("is-selected"));
     e.currentTarget.classList.add("is-selected");
 
-    // console.log(otherWeather[e.currentTarget.dataset.id]);
+    console.log(otherWeather[e.currentTarget.dataset.id]);
     const {
       wind: { speed },
       main: { humidity, temp_max, temp_min },

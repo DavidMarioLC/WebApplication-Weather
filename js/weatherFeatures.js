@@ -21,3 +21,5 @@ export function createWeatherFeatures(weather) {
 
   return createDOM(templateWeatherFeatures(data));
 }
+
+//coments
